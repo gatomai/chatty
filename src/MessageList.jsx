@@ -1,9 +1,21 @@
-<main class="messages">
-  <div class="message">
-    <span class="message-username">Anonymous1</span>
-    <span class="message-content">I won't be impressed with technology until I can download food.</span>
-  </div>
-  <div class="message system">
-    Anonymous1 changed their name to nomnom.
-  </div>
-</main>
+import React, { Component } from 'react';
+import Message from './Message.jsx';
+
+class MessageList extends Component {
+    render() {
+        let messages = this.props.messages.map((message) =>   <Message key={message.id} message={message}/>);
+        return (
+            <div className="messagelist">
+                {messages}
+            </div>
+        );
+    }
+}
+
+export default MessageList;
+
+// renderMessages = () => {
+//     return this.state.messages.map(message => (
+//       <Message username = {message.username} content={message.content} />  
+//     ));
+//   };
