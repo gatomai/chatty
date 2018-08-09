@@ -13,9 +13,3 @@ class MessageList extends Component {
 }
 
 export default MessageList;
-
-// renderMessages = () => {
-//     return this.state.messages.map(message => (
-//       <Message username = {message.username} content={message.content} />  
-//     ));
-//   };

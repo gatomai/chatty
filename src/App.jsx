@@ -4,7 +4,7 @@ import ChatBar from './ChatBar.jsx';
 
 const uid = () => Math.random().toString(34).slice(2);
 
-// Fake messages
+// Fake messages for testing
 // const state_init =
 // {
 //   currentUser: { name: 'Bob' }, // optional. if currentUser is not defined, it means the user is Anonymous
@@ -26,7 +26,6 @@ const uid = () => Math.random().toString(34).slice(2);
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.state = state_init; Cleaning up fake messages.
     this.state = {
       currentUser: {name: 'Bob'},
       messages: [] // messages coming from the server will be stored here as they arrive
@@ -36,11 +35,7 @@ class App extends Component {
 
   addChatMessage(chatMsg) {
     let newChat = {id: uid(), type:'postMessage', clientcount: 1, username: this.state.currentUser.name, content: chatMsg};
-    // const messages = [...this.state.messages, newChat]
-    // this.setState({messages});
     this.socket.send(JSON.stringify(newChat));
-    // this.setState({currentUser: { name: userName }})
-    // this.socket.send(this.state.currentUser.name + chatMsg));
   }
 
   changeUsername = (userName) =>{
@@ -49,7 +44,6 @@ class App extends Component {
     if(userName) {
       this.setState({currentUser: { name: userName }});
     }
-    // console.log(this.state.currentUser,userName);
   }
 
   componentDidMount() {
@@ -66,14 +60,9 @@ class App extends Component {
 
     var socketConnection = new WebSocket('ws://localhost:3001');
     this.socket = socketConnection;
-    // console.log(socketConnection);
     socketConnection.onopen = function (event) {
     console.log('Connected to Server');       
     
-    // alert("onopen");
-
-    // const msg = 'Here is some text that the server is urgently awaiting!';
-    // this.socket.send(msg);   
     };
     this.socket.onmessage =  (event) => {
       var msg = JSON.parse(event.data);
