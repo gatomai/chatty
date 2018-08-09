@@ -4,22 +4,23 @@ import ChatBar from './ChatBar.jsx';
 
 const uid = () => Math.random().toString(34).slice(2);
 
-const state_init =
-{
-  currentUser: { name: 'Bob' }, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: [
-    {
-      username: 'Bob',
-      content: 'Has anyone seen my marbles?',
-      id: uid()
-    },
-    {
-      username: 'Anonymous',
-      content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.',
-      id: uid()
-    }
-  ]
-}
+// Fake messages
+// const state_init =
+// {
+//   currentUser: { name: 'Bob' }, // optional. if currentUser is not defined, it means the user is Anonymous
+//   messages: [
+//     {
+//       id: uid(),      
+//       username: 'Bob',
+//       content: 'Has anyone seen my marbles?'
+//     },
+//     {
+//       id: uid(),
+//       username: 'Anonymous',
+//       content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
+//     }
+//   ]
+// }
 
 
 class App extends Component {
@@ -34,12 +35,21 @@ class App extends Component {
   }
 
   addChatMessage(chatMsg) {
-    let newChat = {id: uid(), username: this.state.currentUser.name, content: chatMsg};
+    let newChat = {id: uid(), type:'postMessage', clientcount: 1, username: this.state.currentUser.name, content: chatMsg};
     // const messages = [...this.state.messages, newChat]
     // this.setState({messages});
     this.socket.send(JSON.stringify(newChat));
+    // this.setState({currentUser: { name: userName }})
     // this.socket.send(this.state.currentUser.name + chatMsg));
+  }
 
+  changeUsername = (userName) =>{
+    let newNotif = {type:'postNotification', clientcount: 1, oldusername: this.state.currentUser.name, newusername: userName, content: ''};
+    this.socket.send(JSON.stringify(newNotif));
+    if(userName) {
+      this.setState({currentUser: { name: userName }});
+    }
+    // console.log(this.state.currentUser,userName);
   }
 
   componentDidMount() {
@@ -67,20 +77,33 @@ class App extends Component {
     };
     this.socket.onmessage =  (event) => {
       var msg = JSON.parse(event.data);
+      console.log('From client',msg.clientcount);
+      switch(msg.type) {
+        case "incomingMessage":
+        msg.content = `${msg.content}  ${'::'}`;
+        break;
+        case "incomingNotification":
+        msg.content = `${msg.content}  ${'::'}`;
+        break;
+        default:
+        msg.content = 'Something happened';
+      }
       const messages = [...this.state.messages, msg]
       this.setState({messages});
+      this.setState({clientcount: msg.clientcount});
       } 
-
   }
 
   render() {
+    const usersonline = this.state.clientcount || 1;
     return (
       <div>
         <nav className="navbar">
-          <a href="/" className="navbar-brand">Chatty App</a>
+          <a href="/" className="navbar-brand">Chatty App</a>         
+          <span className="users-online">#{usersonline} users online</span>
         </nav>
         <MessageList messages={this.state.messages} />
-        <ChatBar addChatMessage={this.addChatMessage} currentUser={this.state.currentUser.name} />
+        <ChatBar addChatMessage={this.addChatMessage} changeUsername={this.changeUsername} currentUser={this.state.currentUser.name} />
       </div>
     );
   }
