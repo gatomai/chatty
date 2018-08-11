@@ -2,6 +2,10 @@ h1 {
   color: tomato;
 }
 
+text  {
+  color: "red";
+  }
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
 
@@ -67,9 +71,30 @@ body {
   flex: 8;
 }
 
+.message-img {
+  float:right;
+  margin-left:20px
+}
+
 .message-username {
   flex: 2;
   font-weight: 700;
+}
+
+.user-red {
+  color: indianred;
+}
+
+.user-gold {
+  color: gold;
+}
+
+.user-khaki {
+  color: khaki;
+}
+
+.user-blue {
+  color: midnightblue;
 }
 
 .navbar {

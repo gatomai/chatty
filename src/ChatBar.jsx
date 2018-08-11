@@ -10,12 +10,6 @@ class ChatBar extends Component {
             this.props.addChatMessage(this.state.message);
             this.setState({ message: '' })
         }
-
-        // console.log(evt.target);
-        // const chatBarInput = evt.target.elements.name;
-        // console.log(evt.target.elements.name);
-        // console.log(evt.target.elements.name.value);
-        // chatInput.value = '';
     };
 
     handleNewUsername = (evt) => {
