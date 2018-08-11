@@ -41,14 +41,17 @@ npm start
 open http://localhost:3001
 ```
 ### Final Product Screenshots
-
+The Main Screen
 ![Main Screen](https://github.com/gatomai/chatty/blob/master/screenshots/MainScreen.png)
 
+The Number of Online Users
 !["Shows Number of Online Users:"](https://github.com/gatomai/chatty/blob/master/screenshots/Show-Users-Online.png)
 
+The notification of a Username change
 !["Shows the effect of a Username change:"](https://github.com/gatomai/chatty/blob/master/screenshots/Username-Change.png)
 
+The Username being displayed in a random color
 !["Shows the Username in a random color:"](https://github.com/gatomai/chatty/blob/master/screenshots/Username-RandomColor.png)
 
-!["Show the functionality of displaying a message with a picture:"]
-(https://github.com/gatomai/chatty/blob/master/screenshots/With-Picture.png)
+The chat window showing pictures
+![With Picture](https://github.com/gatomai/chatty/blob/master/screenshots/With-Picture.png)
