@@ -42,7 +42,7 @@ open http://localhost:3001
 
 ### Final Product Screenshots
 
-!["Main Screen:"](https://github.com/gatomai/chatty/blob/master/screenshots/MainScreen.png)
+![Main Screen](https://github.com/gatomai/chatty/blob/master/screenshots/MainScreen.png)
 
 !["Shows Number of Online Users:"](https://github.com/gatomai/chatty/blob/master/screenshots/Show-Users-Online.png)
 
