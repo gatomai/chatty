@@ -45,10 +45,6 @@ The Main Screen
 
 ![Main Screen](https://github.com/gatomai/chatty/blob/master/screenshots/MainScreen.png)
 
-The Number of Online Users
-
-!["Shows Number of Online Users:"](https://github.com/gatomai/chatty/blob/master/screenshots/Show-Users-Online.png)
-
 The notification of a Username change
 
 !["Shows the effect of a Username change:"](https://github.com/gatomai/chatty/blob/master/screenshots/Username-Change.png)
@@ -56,6 +52,11 @@ The notification of a Username change
 The Username being displayed in a random color
 
 !["Shows the Username in a random color:"](https://github.com/gatomai/chatty/blob/master/screenshots/Username-RandomColor.png)
+
+The Number of Online Users
+
+!["Shows Number of Online Users:"](https://github.com/gatomai/chatty/blob/master/screenshots/Show-Users-Online.png)
+
 
 The chat window showing pictures
 
